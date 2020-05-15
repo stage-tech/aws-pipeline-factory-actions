@@ -1,8 +1,10 @@
 import * as core from '@actions/core'
-
+import * as github from '@actions/github'
 async function run(): Promise<void> {
   try {
-    core.setOutput('time', new Date().toTimeString())
+    const context = github.context
+    const contextAsString = JSON.stringify(context)
+    core.debug(contextAsString)
     const whoToGreet: string = core.getInput('who-to-greet')
     core.debug(`hello ${whoToGreet}`)
 
