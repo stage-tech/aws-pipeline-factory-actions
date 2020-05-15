@@ -1,5 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
+import PipelineFactoryClient from './plf-client'
+
 async function run(): Promise<void> {
   try {
     const context = github.context
@@ -14,8 +16,15 @@ async function run(): Promise<void> {
     const payLoadStr = JSON.stringify(payLoad)
     core.debug(payLoadStr)
 
-    const url = core.getInput('PLF_END_POINT_URL')
-    core.debug(url)
+    const client = new PipelineFactoryClient()
+    client
+      .createPipeline(payLoad)
+      .then(r => {
+        core.debug(JSON.stringify(r))
+      })
+      .catch(e => {
+        core.debug(JSON.stringify(e))
+      })
 
     core.setOutput('call_payload', payLoadStr)
   } catch (error) {
