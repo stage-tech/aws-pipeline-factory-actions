@@ -4297,7 +4297,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const context = github.context;
-            core.debug(JSON.stringify(context));
+            //core.debug(JSON.stringify(context))
             const payLoad = {
                 event: context.eventName,
                 repository_name: context.repo.repo,
@@ -9196,11 +9196,10 @@ class PipelineFactoryClient {
     }
     createPipeline(payload) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.client
-                .post('branch-created', payload)
+            return this.client
+                .post('/branch-created', payload)
                 .then(res => {
                 core.debug(JSON.stringify(res));
-                return res;
             })
                 .catch(e => {
                 core.error(JSON.stringify(e));

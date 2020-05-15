@@ -5,7 +5,7 @@ import PipelineFactoryClient from './plf-client'
 async function run(): Promise<void> {
   try {
     const context = github.context
-    core.debug(JSON.stringify(context))
+    //core.debug(JSON.stringify(context))
     const payLoad = {
       event: context.eventName,
       repository_name: context.repo.repo,

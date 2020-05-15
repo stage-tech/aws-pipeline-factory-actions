@@ -18,11 +18,10 @@ export default class PipelineFactoryClient {
   }
 
   async createPipeline(payload: object): Promise<any> {
-    this.client
-      .post('branch-created', payload)
+    return this.client
+      .post('/branch-created', payload)
       .then(res => {
         core.debug(JSON.stringify(res))
-        return res
       })
       .catch(e => {
         core.error(JSON.stringify(e))
