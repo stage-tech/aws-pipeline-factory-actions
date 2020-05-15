@@ -3522,6 +3522,8 @@ function run() {
             };
             const payLoadStr = JSON.stringify(payLoad);
             core.debug(payLoadStr);
+            const url = core.getInput("PLF_END_POINT_URL");
+            core.debug(url);
             core.setOutput('call_payload', payLoadStr);
         }
         catch (error) {

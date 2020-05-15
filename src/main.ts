@@ -9,16 +9,15 @@ async function run(): Promise<void> {
       repository_owner: context.repo.owner,
       branch: context.ref
     }
-    
+
     const payLoadStr = JSON.stringify(payLoad)
     core.debug(payLoadStr)
-    
-    const url = core.getInput("PLF_END_POINT_URL");
+
+    const url = core.getInput('PLF_END_POINT_URL')
     core.debug(url)
 
     core.setOutput('call_payload', payLoadStr)
-  } 
-  catch (error) {
+  } catch (error) {
     core.setFailed(error.message)
   }
 }
