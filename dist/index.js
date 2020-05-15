@@ -9199,10 +9199,10 @@ class PipelineFactoryClient {
             return this.client
                 .post('/branch-created', payload)
                 .then(res => {
-                core.debug(JSON.stringify(res));
+                core.debug(`client ${JSON.stringify(res)}`);
             })
                 .catch(e => {
-                core.error(JSON.stringify(e));
+                core.error(`client ${JSON.stringify(e)}`);
             });
         });
     }
