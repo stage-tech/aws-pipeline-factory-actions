@@ -9196,14 +9196,13 @@ class PipelineFactoryClient {
     }
     createPipeline(payload) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.client
-                .post('/branch-created', payload)
-                .then(res => {
+            try {
+                const res = this.client.post('/branch-created', payload);
                 core.debug(`client ${JSON.stringify(res)}`);
-            })
-                .catch(e => {
-                core.error(`client ${JSON.stringify(e)}`);
-            });
+            }
+            catch (e) {
+                core.error(`client ${JSON.stringify(e.response)}`);
+            }
         });
     }
 }
