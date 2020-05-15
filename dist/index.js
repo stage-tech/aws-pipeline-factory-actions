@@ -3515,8 +3515,13 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const context = github.context;
-            const contextAsString = JSON.stringify(context);
-            core.debug(contextAsString);
+            const payLoad = {
+                repository_name: context.repo.repo,
+                repository_owner: context.repo.owner,
+                branch: context.ref
+            };
+            const payLoadStr = JSON.stringify(payLoad);
+            core.debug(payLoadStr);
             const whoToGreet = core.getInput('who-to-greet');
             core.debug(`hello ${whoToGreet}`);
             core.setOutput('time', new Date().toTimeString());
