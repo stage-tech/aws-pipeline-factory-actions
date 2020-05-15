@@ -3515,14 +3515,16 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const context = github.context;
+            core.debug(JSON.stringify(context));
             const payLoad = {
+                event: context.eventName,
                 repository_name: context.repo.repo,
                 repository_owner: context.repo.owner,
                 branch: context.ref
             };
             const payLoadStr = JSON.stringify(payLoad);
             core.debug(payLoadStr);
-            const url = core.getInput("PLF_END_POINT_URL");
+            const url = core.getInput('PLF_END_POINT_URL');
             core.debug(url);
             core.setOutput('call_payload', payLoadStr);
         }

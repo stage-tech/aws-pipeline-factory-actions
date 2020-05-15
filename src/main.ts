@@ -3,8 +3,9 @@ import * as github from '@actions/github'
 async function run(): Promise<void> {
   try {
     const context = github.context
-
+    core.debug(JSON.stringify(context))
     const payLoad = {
+      event: context.eventName,
       repository_name: context.repo.repo,
       repository_owner: context.repo.owner,
       branch: context.ref
