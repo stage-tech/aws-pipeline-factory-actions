@@ -20,4 +20,4 @@ jobs:
     - uses: actions/checkout@v1
     - uses: ./
       with: 
-        who-to-greet: Abdo
+        PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"

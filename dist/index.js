@@ -3522,9 +3522,7 @@ function run() {
             };
             const payLoadStr = JSON.stringify(payLoad);
             core.debug(payLoadStr);
-            const whoToGreet = core.getInput('who-to-greet');
-            core.debug(`hello ${whoToGreet}`);
-            core.setOutput('time', new Date().toTimeString());
+            core.setOutput('call_payload', payLoadStr);
         }
         catch (error) {
             core.setFailed(error.message);
