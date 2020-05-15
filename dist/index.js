@@ -76,6 +76,7 @@ const core = __importStar(__webpack_require__(470));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            core.setOutput('time', new Date().toTimeString());
             const whoToGreet = core.getInput('who-to-greet');
             core.debug(`hello ${whoToGreet}`);
             core.setOutput('time', new Date().toTimeString());
