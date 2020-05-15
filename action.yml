@@ -1,10 +1,14 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'AWS Pipeline Factory Triggers'
+description: 'Integrates github repository to Pipeline Factory'
+author: 'AbdoNile @stage-tech'
 inputs:
-  myInput:              # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  who-to-greet:  # id of input
+    description: 'Who to greet'
+    required: true
+    default: 'World'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
 runs:
   using: 'node12'
   main: 'dist/index.js'
