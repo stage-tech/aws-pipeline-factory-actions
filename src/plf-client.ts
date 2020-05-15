@@ -22,7 +22,7 @@ export default class PipelineFactoryClient {
       const res = await this.client.post('/branch-created', payload)
       core.debug(`client ${JSON.stringify(res)}`)
     } catch (e) {
-      core.error(`client ${JSON.stringify(e.response)}`)
+      core.error(`client ${JSON.stringify(e)}`)
     }
   }
 }

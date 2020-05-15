@@ -9201,7 +9201,7 @@ class PipelineFactoryClient {
                 core.debug(`client ${JSON.stringify(res)}`);
             }
             catch (e) {
-                core.error(`client ${JSON.stringify(e.response)}`);
+                core.error(`client ${JSON.stringify(e)}`);
             }
         });
     }
