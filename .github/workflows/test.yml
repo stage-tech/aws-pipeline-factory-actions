@@ -12,3 +12,4 @@ jobs:
       with: 
         PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
         PLF_API_KEY : ${{ secrets.PLF_API_KEY }}
+
