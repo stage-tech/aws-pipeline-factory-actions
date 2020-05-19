@@ -4311,11 +4311,13 @@ function run() {
                 .createPipeline(payLoad)
                 .then(r => {
                 core.debug(JSON.stringify(r));
+                core.setOutput('call_payload', payLoadStr);
             })
                 .catch(e => {
-                core.debug(JSON.stringify(e));
+                core.error("error occurred");
+                core.error(JSON.stringify(e));
+                throw e;
             });
-            core.setOutput('call_payload', payLoadStr);
         }
         catch (error) {
             core.setFailed(error.message);
@@ -9193,7 +9195,7 @@ class PipelineFactoryClient {
                 'x-api-key': apiKey
             }
         });
-        core.debug(`Axios Client created for baseUrl : ${baseUrl} and API key ${apiKey.slice(0, 5)}`);
+        core.debug(`Axios Client created for baseUrl : ${baseUrl} and API key ${apiKey.slice(0, 5)}*******`);
     }
     createPipeline(payload) {
         return __awaiter(this, void 0, void 0, function* () {

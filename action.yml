@@ -2,9 +2,11 @@ name: 'AWS Pipeline Factory Triggers'
 description: 'Integrates github repository to Pipeline Factory'
 author: 'AbdoNile @stage-tech'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    default: 'World'
+  PLF_END_POINT_URL:  # id of input
+    description: 'Pipeline factory base URL'
+  PLF_API_KEY:  # id of input
+    description: 'Pipeline factory API Key'
+
 outputs:
   call_payload: # id of output
     description: 'The time we greeted you'

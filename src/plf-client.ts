@@ -19,7 +19,7 @@ export default class PipelineFactoryClient {
       `Axios Client created for baseUrl : ${baseUrl} and API key ${apiKey.slice(
         0,
         5
-      )}`
+      )}*******`
     )
   }
 

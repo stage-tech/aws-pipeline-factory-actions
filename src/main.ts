@@ -21,12 +21,13 @@ async function run(): Promise<void> {
       .createPipeline(payLoad)
       .then(r => {
         core.debug(JSON.stringify(r))
+        core.setOutput('call_payload', payLoadStr)
       })
       .catch(e => {
-        core.debug(JSON.stringify(e))
+        core.error('error occurred')
+        core.error(JSON.stringify(e))
+        throw e
       })
-
-    core.setOutput('call_payload', payLoadStr)
   } catch (error) {
     core.setFailed(error.message)
   }
