@@ -31,4 +31,13 @@ export default class PipelineFactoryClient {
       core.debug(error)
     }
   }
+
+  async deletePipeline(payload: object): Promise<any> {
+    try {
+      const res = await this.client.post('/branch-deleted', payload)
+      core.debug(`response ${JSON.stringify(res.data)}`)
+    } catch (error) {
+      core.debug(error)
+    }
+  }
 }

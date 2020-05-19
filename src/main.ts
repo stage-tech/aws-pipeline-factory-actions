@@ -17,17 +17,35 @@ async function run(): Promise<void> {
     core.debug(payLoadStr)
 
     const client = new PipelineFactoryClient()
-    client
-      .createPipeline(payLoad)
-      .then(r => {
-        core.debug(JSON.stringify(r))
-        core.setOutput('call_payload', payLoadStr)
-      })
-      .catch(e => {
-        core.error('error occurred')
-        core.error(JSON.stringify(e))
-        throw e
-      })
+
+    switch (context.eventName) {
+      case 'delete':
+        client
+          .deletePipeline(payLoad)
+          .then(r => {
+            core.debug(JSON.stringify(r))
+            core.setOutput('call_payload', payLoadStr)
+          })
+          .catch(e => {
+            core.error('error occurred')
+            core.error(JSON.stringify(e))
+            throw e
+          })
+        break
+      case 'create':
+        client
+          .createPipeline(payLoad)
+          .then(r => {
+            core.debug(JSON.stringify(r))
+            core.setOutput('call_payload', payLoadStr)
+          })
+          .catch(e => {
+            core.error('error occurred')
+            core.error(JSON.stringify(e))
+            throw e
+          })
+        break
+    }
   } catch (error) {
     core.setFailed(error.message)
   }
