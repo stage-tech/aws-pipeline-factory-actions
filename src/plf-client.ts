@@ -26,7 +26,7 @@ export default class PipelineFactoryClient {
   async createPipeline(payload: object): Promise<any> {
     try {
       const res = await this.client.post('/branch-created', payload)
-      core.debug(`client ${JSON.stringify(res)}`)
+      core.debug(`response ${JSON.stringify(res.data)}`)
     } catch (error) {
       core.debug(error)
     }

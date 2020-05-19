@@ -4314,7 +4314,7 @@ function run() {
                 core.setOutput('call_payload', payLoadStr);
             })
                 .catch(e => {
-                core.error("error occurred");
+                core.error('error occurred');
                 core.error(JSON.stringify(e));
                 throw e;
             });
@@ -9201,7 +9201,7 @@ class PipelineFactoryClient {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const res = yield this.client.post('/branch-created', payload);
-                core.debug(`client ${JSON.stringify(res)}`);
+                core.debug(`response ${JSON.stringify(res.data)}`);
             }
             catch (error) {
                 core.debug(error);
