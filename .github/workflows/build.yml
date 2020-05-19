@@ -1,7 +1,7 @@
-name: "build-test"
+name: "build"
 on: # rebuild any PRs and main branch changes
   pull_request:
-  push:
+  delete:
   create:
     branches:
       - master
