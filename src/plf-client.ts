@@ -15,6 +15,12 @@ export default class PipelineFactoryClient {
         'x-api-key': apiKey
       }
     })
+    core.debug(
+      `Axios Client created for baseUrl : ${baseUrl} and API key ${apiKey.slice(
+        0,
+        5
+      )}`
+    )
   }
 
   async createPipeline(payload: object): Promise<any> {
@@ -22,25 +28,6 @@ export default class PipelineFactoryClient {
       const res = await this.client.post('/branch-created', payload)
       core.debug(`client ${JSON.stringify(res)}`)
     } catch (error) {
-      if (error.response) {
-        /*
-         * The request was made and the server responded with a
-         * status code that falls out of the range of 2xx
-         */
-        core.debug(error.response.data)
-        core.debug(error.response.status)
-        core.debug(error.response.headers)
-      } else if (error.request) {
-        /*
-         * The request was made but no response was received, `error.request`
-         * is an instance of XMLHttpRequest in the browser and an instance
-         * of http.ClientRequest in Node.js
-         */
-        core.debug(error.request)
-      } else {
-        // Something happened in setting up the request and triggered an Error
-        core.debug(error.message)
-      }
       core.debug(error)
     }
   }
