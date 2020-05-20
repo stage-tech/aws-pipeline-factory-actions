@@ -9,7 +9,7 @@ inputs:
 
 outputs:
   call_payload: # id of output
-    description: 'The time we greeted you'
+    description: 'payload sent to PLF'
 runs:
   using: 'node12'
   main: 'dist/index.js'
