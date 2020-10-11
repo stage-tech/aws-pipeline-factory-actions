@@ -4298,6 +4298,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const dirInfo = fs_1.default.readdirSync('.');
+            core.debug(`number of items  ${dirInfo.length}`);
             for (let index = 0; index < dirInfo.length; index++) {
                 const element = dirInfo[index];
                 core.debug(element);

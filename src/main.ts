@@ -5,6 +5,8 @@ import fs from 'fs'
 async function run(): Promise<void> {
   try {
     const dirInfo = fs.readdirSync('.')
+    core.debug(`number of items  ${dirInfo.length}`)
+
     for (let index = 0; index < dirInfo.length; index++) {
       const element = dirInfo[index]
       core.debug(element)
