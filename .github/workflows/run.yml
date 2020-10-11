@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Me
-        uses: ./action.yml # Uses an action in the root directory
+        uses: action.yml # Uses an action in the root directory
         id: RunMe
         with:
           PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
