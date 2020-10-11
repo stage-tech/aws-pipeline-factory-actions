@@ -4293,14 +4293,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const github = __importStar(__webpack_require__(469));
 const plf_client_1 = __importDefault(__webpack_require__(492));
+const fs_1 = __importDefault(__webpack_require__(747));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const name = 'abdo';
-            const context = github.context;
-            if (name === 'abdo') {
-                throw new Error('test ');
+            const dirInfo = fs_1.default.readdirSync('.');
+            for (let index = 0; index < dirInfo.length; index++) {
+                const element = dirInfo[index];
+                core.debug(element);
             }
+            const context = github.context;
             core.debug(JSON.stringify(context));
             const payLoad = {
                 event: context.eventName,

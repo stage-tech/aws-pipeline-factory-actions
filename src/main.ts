@@ -1,14 +1,15 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import PipelineFactoryClient from './plf-client'
-
+import fs from 'fs'
 async function run(): Promise<void> {
   try {
-    const name = 'abdo'
-    const context = github.context
-    if (name === 'abdo') {
-      throw new Error('test ')
+    const dirInfo = fs.readdirSync('.')
+    for (let index = 0; index < dirInfo.length; index++) {
+      const element = dirInfo[index]
+      core.debug(element)
     }
+    const context = github.context
     core.debug(JSON.stringify(context))
     const payLoad = {
       event: context.eventName,
