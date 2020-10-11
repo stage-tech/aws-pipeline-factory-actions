@@ -4296,7 +4296,11 @@ const plf_client_1 = __importDefault(__webpack_require__(492));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const name = 'abdo';
             const context = github.context;
+            if (name === 'abdo') {
+                throw new Error('test ');
+            }
             core.debug(JSON.stringify(context));
             const payLoad = {
                 event: context.eventName,

@@ -4,11 +4,11 @@ import PipelineFactoryClient from './plf-client'
 
 async function run(): Promise<void> {
   try {
-    const name= "abdo"
+    const name = 'abdo'
     const context = github.context
-    if(name == "abdo") {
+    if (name === 'abdo') {
       throw new Error('test ')
-      }
+    }
     core.debug(JSON.stringify(context))
     const payLoad = {
       event: context.eventName,
