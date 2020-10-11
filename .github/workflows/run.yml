@@ -13,6 +13,5 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: RunMe
         with:
-          node-version: '12.x'
           PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
           PLF_API_KEY : ${{ secrets.PLF_API_KEY }}
