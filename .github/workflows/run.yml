@@ -1,7 +1,8 @@
+name: run
 on: [push]
 
 jobs:
-  hello_world_job:
+  run:
     runs-on: ubuntu-latest
     name: Run Self hosted Action
     steps:

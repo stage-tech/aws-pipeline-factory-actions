@@ -3,6 +3,7 @@ import * as github from '@actions/github'
 import PipelineFactoryClient from './plf-client'
 
 async function run(): Promise<void> {
+  throw new Error("test ")
   try {
     const context = github.context
     core.debug(JSON.stringify(context))
