@@ -1,23 +1,18 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
 import PipelineFactoryClient from './plf-client'
-import fs from 'fs'
+import {SettingsReader} from './settings-reader'
 async function run(): Promise<void> {
   try {
-    const dirInfo = fs.readdirSync('.')
-    core.debug(`number of items  ${dirInfo.length}`)
-
-    for (let index = 0; index < dirInfo.length; index++) {
-      const element = dirInfo[index]
-      core.debug(element)
-    }
+    const settingsFile = SettingsReader.loadSettingsFile()
     const context = github.context
     core.debug(JSON.stringify(context))
     const payLoad = {
       event: context.eventName,
       repository_name: context.repo.repo,
       repository_owner: context.repo.owner,
-      branch: context.ref
+      branch: context.ref,
+      settings: settingsFile
     }
 
     const payLoadStr = JSON.stringify(payLoad)
