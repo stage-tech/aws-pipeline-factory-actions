@@ -1,0 +1,4 @@
+{
+    "included_branches" : ["master" , "feature/*", "something"],
+    "destroy" : true
+}

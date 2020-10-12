@@ -28,3 +28,27 @@ jobs:
 |PLF_END_POINT_URL| The URL of your pipeline factory instance API|
 |PLF_API_KEY| A valid pipeline factory API Key. Store in Github Secrets |
 
+## Repository Settings File
+
+Add  pipeline-factory.settings file to the root of your repository to override default settings.
+- file format is JSON
+- This file needs to be in repository root path to be considered.
+- File name is case-sensitive.
+- file is optional 
+- All file keys are optional. 
+
+```json
+
+{
+  // name of s3 bucket to store build artifacts
+  "artifactsBucketName" : "s3 bucket name" ,
+
+  // iam role to use for , 
+  "buildAsRoleArn" : "iam role arn",
+
+  // relative location of build spec file , if omitted default is "buildspec.yml"
+  "buildspecFileLocation" : "./scripts/custom_buildspec.yml",
+
+}
+
+```

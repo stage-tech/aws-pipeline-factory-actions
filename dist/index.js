@@ -4293,16 +4293,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(470));
 const github = __importStar(__webpack_require__(469));
 const plf_client_1 = __importDefault(__webpack_require__(492));
+const settings_reader_1 = __webpack_require__(373);
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const settingsFile = settings_reader_1.SettingsReader.loadSettingsFile();
             const context = github.context;
-            //core.debug(JSON.stringify(context))
+            core.debug(JSON.stringify(context));
             const payLoad = {
                 event: context.eventName,
                 repository_name: context.repo.repo,
                 repository_owner: context.repo.owner,
-                branch: context.ref
+                branch: context.ref,
+                settings: settingsFile
             };
             const payLoadStr = JSON.stringify(payLoad);
             core.debug(payLoadStr);
@@ -7868,6 +7871,44 @@ function deprecate (message) {
   console.warn(`DEPRECATED (@octokit/rest): ${message}`)
   loggedMessages[message] = 1
 }
+
+
+/***/ }),
+
+/***/ 373:
+/***/ (function(__unusedmodule, exports, __webpack_require__) {
+
+"use strict";
+
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const fs_1 = __importDefault(__webpack_require__(747));
+const core = __importStar(__webpack_require__(470));
+exports.SettingsReader = {
+    loadSettingsFile() {
+        let contentAsJson = {};
+        const settingsFilePath = './pipeline-factory.settings';
+        const settingsFileExists = fs_1.default.existsSync(settingsFilePath);
+        if (settingsFileExists) {
+            const fileContents = fs_1.default.readFileSync(settingsFilePath);
+            contentAsJson = JSON.parse(fileContents.toString());
+            core.debug(`settings file ${JSON.stringify(contentAsJson, null, 4)}`);
+        }
+        else {
+            core.debug(`no settings file found @ ${settingsFilePath}`);
+        }
+        return contentAsJson;
+    }
+};
 
 
 /***/ }),
