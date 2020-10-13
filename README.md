@@ -49,6 +49,11 @@ Add  pipeline-factory.settings file to the root of your repository to override d
   // relative location of build spec file , if omitted default is "buildspec.yml"
   "buildspecFileLocation" : "./scripts/custom_buildspec.yml",
 
+  
+  // an array of branch names that should be monitored by Pipeline Factory 
+  // "master" branch is default value and is always monitored even if not on the list.
+  "monitoredBranches" : [ "feature-1" , "bugfix-12" , "test" , "demo"],
+
 }
 
 ```
