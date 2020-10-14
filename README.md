@@ -12,10 +12,14 @@ on:
   delete:
   create:
 jobs:
-  Synchronize Pipeline Factory: 
+  Synchronize_Pipeline_Factory: 
     runs-on: ubuntu-latest
     steps:
-    - uses: uses: stage-tech/aws-pipeline-factory-actions@releases/v1.12
+    - name: 'Checkout source code'
+      uses: 'actions/checkout@v2'
+      with:
+        ref: ${{ github.ref }}
+    - uses: stage-tech/aws-pipeline-factory-actions@@latest
       with: 
         PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
         PLF_API_KEY : ${{ secrets.PLF_API_KEY }}
