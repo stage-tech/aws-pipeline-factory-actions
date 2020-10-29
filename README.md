@@ -10,6 +10,7 @@ Create a [AWS Pipeline factory API Gateway token](https://link-to-documentation-
 name: AWS Pipeline Factory Triggers
 on: 
   delete:
+  push:
   create:
 jobs:
   Synchronize_Pipeline_Factory: 
@@ -19,7 +20,7 @@ jobs:
       uses: 'actions/checkout@v2'
       with:
         ref: ${{ github.ref }}
-    - uses: stage-tech/aws-pipeline-factory-actions@@latest
+    - uses: stage-tech/aws-pipeline-factory-actions@v1.3
       with: 
         PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
         PLF_API_KEY : ${{ secrets.PLF_API_KEY }}
