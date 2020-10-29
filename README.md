@@ -5,8 +5,14 @@ Install this action to your repository to automatically create and delete AWS co
 ## How to configure a repository to work with Pipeline Factory
 
 1. Create a [AWS Pipeline factory API Gateway token](https://link-to-documentation-later) and save it to your GitHub repository’s **Settings → Secrets**. 
+2. Add The following secrets to your repository 
+
+|Input Name |Description
+|-|-|
+|PLF_END_POINT_URL| The URL of your pipeline factory instance API|
+|PLF_API_KEY| A valid pipeline factory API Key. Store in Github Secrets |
    
-2. Create a file under you ./github/workflows/pipeline-factory.yml in your repository and add the contents below.
+3. Create a file under you ./github/workflows/pipeline-factory.yml in your repository and add the contents below.
 
 ```workflow
 name: AWS Pipeline Factory Triggers
@@ -27,13 +33,6 @@ jobs:
         PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
         PLF_API_KEY : ${{ secrets.PLF_API_KEY }}
 ```
-
-3. Add The following secrets to your repository 
-
-|Input Name |Description
-|-|-|
-|PLF_END_POINT_URL| The URL of your pipeline factory instance API|
-|PLF_API_KEY| A valid pipeline factory API Key. Store in Github Secrets |
 
 4. Add Repository Settings File to the root of your repository
 
