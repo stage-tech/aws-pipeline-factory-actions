@@ -2,9 +2,11 @@
 
 Install this action to your repository to automatically create and delete AWS code pipeline and code build resources when github branches are created and deleted.
 
-## Usage
+## How to configure a repository to work with Pipeline Factory
 
-Create a [AWS Pipeline factory API Gateway token](https://link-to-documentation-later) and save it to your GitHub repository’s **Settings → Secrets**. Then you can configure your Actions workflow .
+1. Create a [AWS Pipeline factory API Gateway token](https://link-to-documentation-later) and save it to your GitHub repository’s **Settings → Secrets**. 
+   
+2. Create a file under you ./github/workflows/pipeline-factory.yml in your repository and add the contents below.
 
 ```workflow
 name: AWS Pipeline Factory Triggers
@@ -20,27 +22,26 @@ jobs:
       uses: 'actions/checkout@v2'
       with:
         ref: ${{ github.ref }}
-    - uses: stage-tech/aws-pipeline-factory-actions@v1.3
+    - uses: stage-tech/aws-pipeline-factory-actions@releases/v1.3
       with: 
         PLF_END_POINT_URL: "https://pipeline-factory.tools.salt-dev.ws/"
         PLF_API_KEY : ${{ secrets.PLF_API_KEY }}
 ```
 
-## Configurations
+3. Add The following secrets to your repository 
 
 |Input Name |Description
 |-|-|
 |PLF_END_POINT_URL| The URL of your pipeline factory instance API|
 |PLF_API_KEY| A valid pipeline factory API Key. Store in Github Secrets |
 
-## Repository Settings File
+4. Add Repository Settings File to the root of your repository
 
-Add  pipeline-factory.settings file to the root of your repository to override default settings.
+- File name is  pipeline-factory.settings (File name is case-sensitive)
+- location is : the root of your repository to override default settings.
 - file format is JSON
-- This file needs to be in repository root path to be considered.
-- File name is case-sensitive.
-- file is optional 
-- All file keys are optional. 
+- file presence is optional and all file keys are optional. 
+- If you don't need one of the settings , it **must be deleted** from the JSON file. only leave the settings keys you need.
 
 ```json
 
