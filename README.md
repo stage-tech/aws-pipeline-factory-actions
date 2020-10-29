@@ -46,13 +46,13 @@ Add  pipeline-factory.settings file to the root of your repository to override d
 
 {
   // name of s3 bucket to store build artifacts
-  "artifactsBucketName" : "s3 bucket name" ,
+  // "artifactsBucketName" : "s3 bucket name" ,
 
   // iam role to use for , 
-  "buildAsRoleArn" : "iam role arn",
+  // "buildAsRoleArn" : "iam role arn",
 
   // relative location of build spec file , if omitted default is "buildspec.yml"
-  "buildspecFileLocation" : "./scripts/custom_buildspec.yml",
+  // "buildspecFileLocation" : "./scripts/custom_buildspec.yml",
 
   
   // an array of branch names that should be monitored by Pipeline Factory 
